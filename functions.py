@@ -5,6 +5,9 @@ try:
     with sqlite3.connect("students.sqlite3") as conn:
         cur = conn.cursor()
 
+        # to create a table
+        cur.execute(queries.CREATE_TABLE)
+
 
     class Connectivity:
         def start(self):
@@ -31,12 +34,15 @@ try:
                 self.delete_record()
             else:
                 print('Invalid option')
+            return
 
         def display_record(self):
             # selecting all records from table
             students = cur.execute(queries.FETCH_ALL)  # fetch all records from db
             for i in students:
                 print(i)
+
+            return
 
         def insert_record(self):
             # inserting records into table
@@ -50,6 +56,7 @@ try:
             conn.commit()
 
             print('Student record successfully added')
+            return
 
         def delete_record(self):
             # deleting a record from table
@@ -58,6 +65,7 @@ try:
             conn.commit()
 
             print('Student record deleted successfully')
+            return
 
         def update_record(self):
             # updating a record in the table
@@ -73,6 +81,7 @@ try:
             conn.commit()
 
             print('Student record updated successfully')
+            return
 
 
 except sqlite3.Connection as e:
