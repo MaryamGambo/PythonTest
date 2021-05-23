@@ -7,6 +7,7 @@ try:
 
         # to create a table
         cur.execute(queries.CREATE_TABLE)
+        conn.commit()
 
 
     class Connectivity:
